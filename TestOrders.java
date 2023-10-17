@@ -3,90 +3,61 @@ public class TestOrders {
     public static void main(String[] args){
 
     // Items
-        Item item1 = new Item();
-        item1.name = "mocha";
-        item1.price = 4.50;
+        Item mocha = new Item("mocha", 4.50);
 
-        Item item2 = new Item();
-        item2.name = "latte";
-        item2.price = 4.00;
+        Item latte = new Item("latte", 4.00);
 
-        Item item3 = new Item();
-        item3.name = "drip coffee";
-        item3.price = 3.00;
+        Item dripCoffee = new Item();
+        dripCoffee.setName("drip coffee");
+        dripCoffee.setPrice(3.00);
 
-        Item item4 = new Item();
-        item4.name = "cappuccino";
-        item4.price = 3.50;
+        Item cappucino = new Item();
+        cappucino.setName("cappuccino");
+        cappucino.setPrice(3.50);
 
     // Orders
         Order order1 = new Order();
-        order1.name =  "Cindhuri";
-        order1.total = 0.00;
-        order1.ready = false;
-        order1.items.add(item1);
-        order1.items.add(item2);
-        for(Item item : order1.items){
-            order1.total += item.price;
-        }
+        order1.setName("Cindhuri");
+        order1.setReadyStatus(true);
+        order1.addItem(mocha);
+        order1.addItem(latte);
+        order1.getOrderTotal();
 
         Order order2 = new Order();
-        order2.name = "Jimmy";
-        order2.total = 0.00;
-        order2.ready = false;
-        order2.items.add(item3);
-        order2.items.add(item4);
-        for(Item item : order2.items){
-            order2.total += item.price;
-        }
-        System.out.println(order2.total);
+        order2.setName("Jimmy");
+        order2.setReadyStatus(false);
+        order2.addItem(dripCoffee);
+        order2.addItem(cappucino);
+        order2.getOrderTotal();
 
-        Order order3 = new Order();
-        order3.name = "Noah";
-        order3.total = 0.00;
-        order3.ready = false;
-        order3.items.add(item1);
-        order3.items.add(item3);
-        for(Item item : order3.items){
-            order3.total += item.price;
-        }
+        Order order3 = new Order("Noah");
+        order3.setReadyStatus(false);
+        order3.addItem(mocha);
+        order3.addItem(dripCoffee);
+        order3.getOrderTotal();
 
-        Order order4 = new Order();
-        order4.name = "Sam";
-        order4.total = 0.00;
-        order4.ready = false;
-        order4.items.add(item2);
-        order4.items.add(item4);
-        for(Item item : order4.items){
-            order4.total += item.price;
-        }
+        Order order4 = new Order("Sam");
+        order4.setReadyStatus(false);
+        order4.addItem(latte);
+        order4.addItem(cappucino);
+        order4.getOrderTotal();
 
-        order2.items.add(item1);
-        order2.total += item1.price;
-        
-        // System.out.println(order1);
-        // System.out.println(order1.total);
-        // System.out.println(item1.name);
-        // System.out.println(item2.price);
-        // System.out.println(order2.total);
+        Order order5 = new Order("Will");
+        order5.setReadyStatus(true);
+        order5.addItem(latte);
+        order5.addItem(latte);
+        order5.addItem(latte);
+        order5.getOrderTotal();
 
-        order3.items.add(item4);
-        order3.total += item4.price;
-        System.out.println("Order 3 total: " + order3.total);
-        
-        order4.items.add(item2);
-        order4.total += item4.price;
-        System.out.println("Order 4 total: " + order4.total);
+        System.out.println(order1.getStatusMessage());
+        System.out.println(order2.getStatusMessage());
+        System.out.println(order1.getOrderTotal());
+        System.out.println(order3.getOrderTotal());
 
-        order1.ready = true;
-        System.out.println("Order 1 ready status: " + order1.ready);
-
-        order4.items.add(item2);
-        order4.items.add(item2);
-        order4.total += (item2.price * 2);
-        System.out.println("Order 4 new total: " + order4.total);
-
-        order2.ready = true;
-        System.out.println("Order 2 ready status: " + order2.ready);
+        System.out.println(order1.display());
+        System.out.println(order2.display());
+        System.out.println(order3.display());
+        System.out.println(order4.display());
+        System.out.println(order5.display());
     }
 }
