@@ -2,7 +2,7 @@ import java.util.ArrayList;
 public class Order {
     private String name;
     private boolean ready;
-    private ArrayList<Item> items = new ArrayList<Item>();
+    private ArrayList<Item> items;
 
     public Order() {
         this.name = "Guest";
@@ -11,6 +11,7 @@ public class Order {
 
     public Order(String name) {
         this.name = name;
+        this.ready = false;
         this.items = new ArrayList<Item>();
     }
 
@@ -37,11 +38,11 @@ public class Order {
     }
 
     public void addItem(Item item) {
-        this.items.add(item);
+        items.add(item);
     }
 
     public String getStatusMessage() {
-        if(this.ready == true){
+        if(ready == true){
             return "Your order is ready";
         }
         else{
@@ -51,8 +52,8 @@ public class Order {
     // add up all to prices from the items
     public double getOrderTotal(){
         double total = 0.00;
-        for(int i = 0; i < this.items.size(); i ++) {
-            Item anItem = this.items.get(i);
+        for(int i = 0; i < items.size(); i ++) {
+            Item anItem = items.get(i);
             double price = anItem.getPrice();
             total += price;
         }
@@ -61,8 +62,8 @@ public class Order {
     // display all the items and their names and prices
     public String display() {
         System.out.println("Customer name: " + this.name);
-        for(int i = 0; i < this.items.size(); i++){
-            Item thisItem = this.items.get(i);
+        for(int i = 0; i < items.size(); i++){
+            Item thisItem = items.get(i);
             String itemName = thisItem.getName();
             double itemPrice = thisItem.getPrice();
             System.out.println(itemName + " - $" + itemPrice);

@@ -1,6 +1,7 @@
 public class Item {
     private String name;
     private double price;
+    private int index;
 
     // constructors
     public Item(){
@@ -20,6 +21,10 @@ public class Item {
         return price;
     }
 
+    public int getIndex() {
+        return this.index;
+    }
+
     // and setters
     public void setName(String name){
         this.name = name;
@@ -29,4 +34,7 @@ public class Item {
         this.price = price;
     }
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
 }
